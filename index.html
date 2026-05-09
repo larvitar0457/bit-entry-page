@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>BIT Data Studio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="card" id="card" data-state="checking">
+    <div class="brand">
+      <div class="brand-logo">BIT</div>
+      <div class="brand-name">Data Studio</div>
+    </div>
+
+    <div class="status">
+      <div class="spinner" id="spinner" aria-hidden="true"></div>
+      <h1 id="headline">正在连接…</h1>
+      <p id="subline" class="subline">检查服务状态</p>
+    </div>
+
+    <dl class="meta">
+      <div>
+        <dt>上次在线</dt>
+        <dd id="last-online">—</dd>
+      </div>
+      <div>
+        <dt>最近检查</dt>
+        <dd id="last-check">—</dd>
+      </div>
+      <div>
+        <dt>下次重试</dt>
+        <dd id="countdown">—</dd>
+      </div>
+    </dl>
+
+    <button id="retry-btn" class="retry-btn" type="button">立即重试</button>
+
+    <p class="footnote">
+      此页面会自动检测服务状态并跳转，无需手动刷新。
+    </p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

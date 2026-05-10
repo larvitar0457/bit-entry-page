@@ -5,42 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
   <title>BIT Data Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="card" id="card" data-state="checking">
-    <div class="brand">
-      <div class="brand-logo">BIT</div>
-      <div class="brand-name">Data Studio</div>
+    <div class="card-body">
+      <div class="brand">
+        <div class="brand-dot"></div>
+        <span>BIT · Data Studio</span>
+      </div>
+
+      <div class="icon-wrap" id="icon-wrap"></div>
+
+      <h1 id="headline">正在唤醒数据服务</h1>
+      <p id="subline" class="subline">稍候片刻</p>
+
+      <div class="spacer"></div>
+
+      <button class="notify-btn" id="notify-btn" type="button">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span id="notify-btn-text">通知管理员</span>
+      </button>
     </div>
-
-    <div class="status">
-      <div class="spinner" id="spinner" aria-hidden="true"></div>
-      <h1 id="headline">正在连接…</h1>
-      <p id="subline" class="subline">检查服务状态</p>
-    </div>
-
-    <dl class="meta">
-      <div>
-        <dt>上次在线</dt>
-        <dd id="last-online">—</dd>
-      </div>
-      <div>
-        <dt>最近检查</dt>
-        <dd id="last-check">—</dd>
-      </div>
-      <div>
-        <dt>下次重试</dt>
-        <dd id="countdown">—</dd>
-      </div>
-    </dl>
-
-    <button id="retry-btn" class="retry-btn" type="button">立即重试</button>
-
-    <p class="footnote">
-      此页面会自动检测服务状态并跳转，无需手动刷新。
-    </p>
+    <div class="progress-bar"><div class="progress-bar-inner" id="progress"></div></div>
+    <p class="footnote">页面每 10 秒自动检测一次，恢复后立即跳转</p>
   </main>
+
+  <div class="modal-backdrop" id="modal-backdrop">
+    <div class="modal" role="dialog" aria-labelledby="modal-title">
+      <div class="modal-icon">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2 id="modal-title">怎么称呼您？</h2>
+      <p>我会告诉管理员您在等面板，方便优先处理</p>
+      <input
+        type="text"
+        class="modal-input"
+        id="name-input"
+        placeholder="例如：Jim、小王"
+        maxlength="10"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <p class="modal-hint" id="modal-hint">请输入 2–10 个字的真实称呼</p>
+      <div class="modal-actions">
+        <button class="modal-btn cancel" id="modal-cancel" type="button">取消</button>
+        <button class="modal-btn submit" id="modal-submit" type="button" disabled>发送通知</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">
+    <div class="toast-dot"></div>
+    <span id="toast-text"></span>
+  </div>
 
   <script src="app.js"></script>
 </body>
